@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragmentSleepTracker">
+
+    <fragment
+        android:id="@+id/fragmentSleepTracker"
+        android:name="com.eneselcuk.room.sleeptracker.FragmentSleepTracker"
+        android:label="FragmentSleepTracker"
+        tools:layout="@layout/fragment_sleep_tracker">
+        <action
+            android:id="@+id/action_fragmentSleepTracker_to_fragmentSleepQuality"
+            app:destination="@id/fragmentSleepQuality" />
+        <action
+            android:id="@+id/action_fragmentSleepTracker_to_sleepDetail"
+            app:destination="@id/sleepDetail" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSleepQuality"
+        android:name="com.eneselcuk.room.sleepquality.FragmentSleepQuality"
+        android:label="FragmentSleepQuality"
+        tools:layout="@layout/fragment_sleep_quality">
+        <action
+            android:id="@+id/action_fragmentSleepQuality_to_fragmentSleepTracker"
+            app:destination="@id/fragmentSleepTracker" />
+        <argument
+            android:name="sleepData"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/sleepDetail"
+        android:name="com.eneselcuk.room.sleepDetail.SleepDetailFragment"
+        android:label="SleepDetail"
+        tools:layout="@layout/fragment_sleep_detail">
+
+        <argument
+            android:name="sleepData"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_sleepDetail_to_fragmentSleepTracker"
+            app:destination="@id/fragmentSleepTracker" />
+
+    </fragment>
+</navigation>
